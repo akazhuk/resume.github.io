@@ -9,24 +9,25 @@ defineProps<{
 
 <template>
   <div class="greetings">
-    <h1 class="green">hello world!</h1>
-    <h3>
-      昵称：JkTam 
-    </h3>
-    <h3>
-      手机号：13288447064
-    </h3>
-    <h3>
-      邮箱：511979003@qq.com
-    </h3>
+    <h1 class="latte">hello world!</h1>
   </div>
   <div>
     <h3>
       你好！这是我的个人网站
     </h3>
     <h3>
-    可以从下面的标签了解我的技术栈和工作经历。
+    可了解我的技术栈和工作经历
     </h3>
+  </div>
+  <div class="divider-line"></div>
+  <div>
+    <h3>联系方式：</h3>
+    <h4>
+      手机号：<span style="color: gray;">13288447064</span>
+    </h4>
+    <h4>
+      邮箱：<span style="color: gray;">511979003@qq.com</span>
+    </h4>
   </div>
 </template>
 
@@ -53,4 +54,13 @@ h3 {
     text-align: left;
   }
 }
+
+/* 基础下划线样式 */
+.divider-line {
+  width: 100%; /* 宽度可自定义，比如 80% */
+  height: 1px; /* 分割线粗细 */
+  background-color: #8B4513; /* 咖啡色系，可替换为你的RGB/十六进制色 */
+  margin: 16px 0; /* 上下间距，适配布局 */
+}
+
 </style>
