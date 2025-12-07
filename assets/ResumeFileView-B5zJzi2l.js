@@ -1,0 +1,1 @@
+import{_ as a,c as o,b as n,o as s}from"./index-DLE2t2c5.js";const t={};function c(r,e){return s(),o("main",null,[...e[0]||(e[0]=[n("a",{href:"/file/谭柱坤-简历.pdf",download:"谭柱坤简历.pdf",class:"download-btn"}," 下载简历附件 ",-1)])])}const f=a(t,[["render",c],["__scopeId","data-v-c7a4a7f8"]]);export{f as default};
