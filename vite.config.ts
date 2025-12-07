@@ -7,7 +7,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/public',
+  base: './public',
   build: {
     // outDir: path.resolve(__dirname, '../tp/public/index')
     outDir: path.resolve(__dirname, './public')
