@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [ "main" ]
 
+# 关键：显式配置权限，解决403核心问题
+permissions:
+  contents: write       # 允许写入仓库内容（推送代码到gh-pages分支）
+  pages: write          # 允许操作GitHub Pages
+  id-token: write       # 部分部署Action依赖此权限
+
 jobs:
   build:
     runs-on: ubuntu-latest
