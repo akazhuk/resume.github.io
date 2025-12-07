@@ -27,7 +27,9 @@ jobs:
         npm install
         npm install --save-dev webpack-cli
         npm run build
+    
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
-          publish_dir: ./index # 关键：指向构建后的目录
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./index # 关键：指向构建后的目录
