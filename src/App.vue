@@ -42,9 +42,7 @@ onMounted(async () => {
       <img alt="coding gif" class="logo" src="./images/coding.gif" width="125" height="125" />
     </div>
     <div class="wrapper">
-
       <UserInfo :nickname=nickname :mobile=mobile :email=email :desc=desc />
-
       <nav>
         <RouterLink to="/"> 主页 </RouterLink>
         <RouterLink to="/skills"> 技术栈 </RouterLink>

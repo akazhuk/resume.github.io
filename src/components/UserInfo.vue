@@ -9,7 +9,7 @@ defineProps<{
 
 <template>
   <div class="greetings">
-    <h1 class="latte">hello coffee!</h1>
+    <h1 class="latte">hello world!</h1>
   </div>
   <div>
     <h3>
