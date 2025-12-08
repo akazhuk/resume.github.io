@@ -17,7 +17,7 @@
 import { ref } from 'vue';
 
 // PDF文件路径（public目录下，纯英文命名！）
-const resumePdfUrl = '/file/谭柱坤-简历.pdf';
+const resumePdfUrl = '/src/file/谭柱坤-简历.pdf';
 
 // 在线预览：打开新标签页（浏览器自带PDF预览）
 const previewResume = () => {
