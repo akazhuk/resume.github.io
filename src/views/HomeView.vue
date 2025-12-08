@@ -16,10 +16,10 @@
                 <p class="text-desc">咖啡如此，人生亦如此，共勉！</p>
             </div> -->
             <!-- 代码块 -->
-            <CodeBlock lang="java" 
-code="function helloWorld(): void
+            <CodeBlock style="text-align: left;" lang="javascript" 
+code="function helloWorld()
       {
-        echo 'Hello World!'
+        console.log('Hello World!')
       }
       helloWorld();"
 />

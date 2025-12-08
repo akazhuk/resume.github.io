@@ -16,9 +16,7 @@ import Prism from 'prismjs'
 import prettier from 'prettier'
 
 // 引入需要的语言高亮（按需引入，减小体积）
-// import 'prismjs/components/prism-javascript'
-// import 'prismjs/components/prism-typescript.js'
-import 'prismjs/components/prism-java'
+import 'prismjs/components/prism-javascript'
 
 // 引入样式
 import 'prismjs/themes/prism-tomorrow.css'
@@ -54,35 +52,20 @@ const props = defineProps({
 // 1. 自动格式化代码（核心优化）
 const formatCode = (code: string, lang: string) => {
     try {
-         // 第一步：新增！去掉代码最开头的所有空格/换行/Tab（核心修改）
-        const cleanedCode = code.replace(/^\s+/, ''); // ^\s+ 匹配开头所有空白字符
-        let javaPlugin = null
-        if (lang === 'java') javaPlugin = require('prettier-plugin-java')
-        const parsers: Record<string, any> = {
-            java: [javaPlugin],
-        }
-
         const formatOptions = {
-            parser: lang === 'vue' ? 'vue' : lang === 'java' ? 'java' : lang === 'php' ? 'php' : lang,
-            plugins: parsers[lang] || [parserBabel],
+            plugins: [parserBabel],
             tabWidth: 2,
             printWidth: 80,
-            singleQuote: lang === 'java' || lang === 'php' ? false : true,
-            trailingComma: lang === 'java' || lang === 'php' ? 'none' : 'es5',
+            singleQuote: true,
+            trailingComma: 'es5',
             bracketSpacing: true
         }
-        return prettier.format(cleanedCode, formatOptions)
+        return prettier.format(code, formatOptions)
     } catch (e) {
         console.warn(`[${lang}] 格式化失败：`, e)
         return code
     }
 }
-
-// 2. 先格式化再高亮
-const formattedCode = computed(() => {
-    const result = formatCode(props.code, props.lang);
-    return result;
-});
 
 // 2. 打字机核心状态
 const formattedFullCode = ref('') // 格式化后的完整代码
@@ -162,42 +145,46 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* 新增：行号栏样式 */
-.line-numbers {
-    padding: 8px 0;
-    background: #181818;
-    /* 行号栏背景稍暗，区分代码区 */
-    text-align: right;
-}
-
-.line-numbers span {
-    display: block;
-    padding: 0 8px;
-    color: #888;
-    /* 行号颜色弱化 */
-    font-size: 12px;
-    line-height: 1.4;
-}
-
+/* 行号容器 + 代码容器：统一基础样式 */
 .code-block {
-    margin: 16px 0;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #1e1e1e;
-    /* 新增：flex 布局适配行号 */
-    display: flex;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    /* 新增：轻微阴影提升层次感 */
+  margin: 8px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #1e1e1e;
+  max-width: 600px;
+  max-height: 300px;
+  display: flex;
+  align-items: flex-start; /* 顶部对齐，避免容器错位 */
+  font-family: "Consolas", "Monaco", monospace; /* 统一等宽字体（代码场景必用） */
+  font-size: 16px; /* 统一字号 */
 }
 
+/* 行号容器：与代码容器的padding完全匹配 */
+.line-numbers {
+  padding: 8px 0; /* 和代码容器的padding-top/padding-bottom一致 */
+  background: #181818;
+  text-align: right;
+  padding-right: 8px; /* 行号右侧留间距 */
+}
+
+/* 行号单个数字：与代码行的行高、基线完全对齐 */
+.line-numbers span {
+  display: block; /* 每个行号占一行，确保和代码行一一对应 */
+  padding: 0 4px;
+  color: #888;
+  line-height: 1.5; /* 与代码行的line-height完全一致 */
+  height: 1.5em; /* 强制行高=高度，避免空白偏差 */
+  box-sizing: border-box;
+}
+
+/* 代码容器：与行号容器的padding、行高统一 */
 .code-pre {
-    margin: 0;
-    padding: 16px;
-    color: #fff;
-    font-size: 14px;
-    line-height: 1.5;
-    overflow-x: auto;
-    flex: 1;
-    /* 自适应剩余宽度 */
+  margin: 0;
+  padding: 8px 12px; /* 顶部/底部padding和行号容器一致 */
+  color: #fff;
+  line-height: 1.5; /* 与行号的line-height完全一致 */
+  overflow-x: auto;
+  flex: 1;
+  box-sizing: border-box;
 }
 </style>
