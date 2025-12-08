@@ -10,16 +10,32 @@
                 <!-- 网络图片：src="https://xxx.com/resume-cover.png" -->
             </div>
             <!-- 文字区域：居中对齐 -->
-            <div class="text-wrapper">
+            <!-- <div class="text-wrapper">
                 <h3 class="text-title">意式浓缩</h3>
                 <p class="text-desc">加水=美式，加牛奶=拿铁/卡布奇诺</p>
                 <p class="text-desc">咖啡如此，人生亦如此，共勉！</p>
-            </div>
+            </div> -->
+            <!-- 代码块 -->
+            <CodeBlock lang="java" 
+code="$coffeeIngredient = '水';
+      switch ($coffeeIngredient) {
+        case '水':
+            echo '美式';
+            break;
+        case '牛奶':
+            echo '拿铁';
+            break;
+        default:
+            echo '意式浓缩';
+            break;
+        }"
+/>
         </div>
     </main>
 </template>
 
 <script setup lang="ts">
+import CodeBlock from '@/components/CodeBlock.vue'
 
 </script>
 
@@ -29,7 +45,7 @@
     width: 100%;
     max-width: 400px;
     /* 限制最大宽度，避免拉伸 */
-    margin: 20px auto; 
+    margin: 20px auto;
     text-align: center;
 }
 
