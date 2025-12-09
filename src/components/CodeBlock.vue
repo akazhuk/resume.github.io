@@ -4,7 +4,10 @@
             <!-- Run按钮 -->
             <button v-if="lang === 'javascript' || lang === 'js'" class="run-code-btn" @click="runJsCode"
                 :disabled="isRunning">
-                {{ isRunning ? 'Running...' : 'Run' }}
+                <!-- 加载动画：isRunning=true时显示 -->
+                <span class="loading-spinner" v-if="isRunning"></span>
+                <!-- 按钮文字：isRunning=false时显示 -->
+                <span class="btn-text" v-else>Run</span>
             </button>
             <!-- 行号栏 -->
             <div class="line-numbers" v-if="showLineNumbers">
@@ -248,7 +251,7 @@ onUnmounted(() => {
     /* 距离右侧4px */
     z-index: 10;
     /* 确保按钮在最上层，不被代码遮挡 */
-    padding: 2px 8px;
+    padding: 4px 10px; /* 微调padding，适配加载动画 */
     /* 小尺寸，适配右上角 */
     border: none;
     border-radius: 3px;
@@ -261,6 +264,7 @@ onUnmounted(() => {
     /* 小字号，不占空间 */
     font-weight: 600;
     transition: background 0.2s;
+    display: flex; /* 让动画和文字居中对齐 */
 }
 
 /* 按钮禁用/运行中样式 */
@@ -268,6 +272,22 @@ onUnmounted(() => {
     background: #666;
     cursor: not-allowed;
     opacity: 0.8;
+}
+
+/* 加载动画核心样式 */
+.loading-spinner {
+  width: 12px; /* 动画尺寸，适配按钮大小 */
+  height: 12px;
+  border: 2px solid #fff; /* 白色边框（适配深色按钮） */
+  border-top: 2px solid transparent; /* 顶部透明，形成缺口 */
+  border-radius: 50%; /* 圆形 */
+  animation: spin 0.8s linear infinite; /* 旋转动画 */
+}
+
+/* 旋转动画关键帧 */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* 鼠标悬浮样式 */
