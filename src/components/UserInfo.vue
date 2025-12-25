@@ -20,8 +20,13 @@ defineProps<{
     </h3>
   </div>
   <div class="divider-line"></div>
-  <div>
-    <h3>联系方式：</h3>
+  <div style="padding-right: 8px; padding-bottom: 8px;">
+    <h4>个人信息：</h4>
+    <h4>姓名：<span style="color: gray;">谭柱坤</span></h4>
+    <h4>现居住地：<span style="color: gray;">广东佛山顺德大良</span></h4>
+  </div>
+  <div >
+    <h4>联系方式：</h4>
     <h4>
       手机号：<span style="color: gray;">13288447064</span>
     </h4>
