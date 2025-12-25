@@ -22,7 +22,7 @@ defineProps<{
   <div class="divider-line"></div>
   <div style="padding-right: 8px; padding-bottom: 8px;">
     <h4>个人信息：</h4>
-    <h4>姓名：<span style="color: gray;">谭柱坤</span></h4>
+    <h4>姓名：<span style="color: gray;">谭先生</span></h4>
     <h4>现居住地：<span style="color: gray;">广东佛山顺德大良</span></h4>
   </div>
   <div >
